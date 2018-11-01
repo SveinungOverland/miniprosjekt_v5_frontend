@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 import { withStyles, createStyles } from '@material-ui/core/styles'
 
@@ -35,11 +36,17 @@ const styles = createStyles({
 })
 
 interface Props extends News { 
-    classes: { [name: string]: string }
+    classes: { [name: string]: string },
 }
 
 
 export default withStyles(styles)((props: Props) => {
+    const handleUserLink = (event: React.MouseEvent<HTMLElement>) => {
+
+    }
+    const handleNewsLink = (event: React.MouseEvent<HTMLElement>) => {
+
+    }
     const { classes } = props
     return (
         <Card className={classes.card}>
@@ -49,9 +56,10 @@ export default withStyles(styles)((props: Props) => {
                 }
                 title={ props.poster }
                 subheader={ props.timestamp.toDateString() }
+                onClick={ handleUserLink }
             />
             <img className={ classes.media } src={ props.image }/>
-            <CardContent>
+            <CardContent onClick={ handleNewsLink }>
                 <Typography gutterBottom variant="h5" component="h2">
                     { props.header }
                 </Typography>
@@ -65,5 +73,5 @@ export default withStyles(styles)((props: Props) => {
                 
             </CardContent>
         </Card>
-        )
-    })
+    )
+})
