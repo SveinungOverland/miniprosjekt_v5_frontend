@@ -4,7 +4,6 @@ import Comment from './comment'
 
 export default interface News {
     poster: string, // username
-    poster_avatar?: string, // url
     header: string,
     content: string,
     peek?: string,

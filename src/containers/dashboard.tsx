@@ -48,7 +48,6 @@ interface State {
     news: News[],
     showFab: boolean,
     scrollState: {
-        direction: ScrollDir,
         lastPosition: number
     }
 }
@@ -56,6 +55,16 @@ interface State {
 
 class Dashboard extends Component<Props> {
 
+
+    state: State = {
+        news: [],
+        showFab: true,
+
+        scrollState: {
+            lastPosition: 0
+        }
+    }
+    
 
     componentDidMount() {
         getNews(NewsEnum.all_time)
@@ -67,13 +76,12 @@ class Dashboard extends Component<Props> {
 
     handleScroll = (event: Event) => {
         let newScrollY: number = window.scrollY
-        const { direction, lastPosition } = this.state.scrollState
+        const { lastPosition } = this.state.scrollState
         let newDir: ScrollDir = (newScrollY > lastPosition && newScrollY > 40) ? ScrollDir.DOWN : ScrollDir.UP
 
         this.setState({
             ...this.state,
             scrollState: {
-                direction: newDir,
                 lastPosition: newScrollY
             },
             showFab: (newDir === ScrollDir.DOWN) ? false : true
@@ -86,15 +94,6 @@ class Dashboard extends Component<Props> {
         console.log("ADDING ASIFIAUDSGBdblihj")
     }
 
-    state: State = {
-        news: [],
-        showFab: true,
-
-        scrollState: {
-            direction: ScrollDir.DOWN,
-            lastPosition: 0
-        }
-    }
 
     render() {
         const { classes } = this.props;
