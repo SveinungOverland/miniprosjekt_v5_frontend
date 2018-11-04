@@ -23,7 +23,6 @@ import News from '../types/news'
 
 const styles = createStyles({
     card: {
-        maxWidth: 400,
     },
     media: {
         width: '100%',

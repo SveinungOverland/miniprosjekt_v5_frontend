@@ -1,5 +1,5 @@
 import React, { ReactNode, Component } from 'react'
-
+import { isMobile } from 'is-mobile'
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles'
 
 // UI imports
@@ -102,15 +102,15 @@ class Dashboard extends Component<Props> {
             <div className={ classes.root }>
                 <EventListener
                     target="window"
-                    onScroll={ this.handleScroll }>
+                    onScroll={ isMobile() ? this.handleScroll : undefined }>
 
                     <Slide direction="down" in={ showFab }>
                         <Navigation />
                     </Slide>
 
                     <NewsGridComponent>
-                        { news.map((item: News) => (
-                            <NewsComponent key={ item.poster +"+"+ item.timestamp } { ...item } />
+                        { news.map((item: News, index: number) => (
+                            <NewsComponent key={ item.poster +"+"+ item.timestamp+"+"+index } { ...item } />
                         ))}
                     </NewsGridComponent>
                     <Slide direction="up" in={ showFab }>

@@ -24,5 +24,60 @@ export const all_time: News[] = [{
         category: "memes",
         quality: 6,
         comments: []
+    },
+    {
+        poster: "Master Reposter",
+        header: "repost #1",
+        peek: "totally not a repost",
+        content: "Totally not a repost",
+        timestamp: new Date("2018-11-01T16:17:00"),
+        image: "https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg?cs=srgb&dl=light-art-blue-370799.jpg&fm=jpg",
+        category: "memes",
+        quality: 6,
+        comments: []
+    },
+    {
+        poster: "Master Reposter",
+        header: "repost #1",
+        peek: "totally not a repost",
+        content: "Totally not a repost",
+        timestamp: new Date("2018-11-01T16:17:00"),
+        image: "https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg?cs=srgb&dl=light-art-blue-370799.jpg&fm=jpg",
+        category: "memes",
+        quality: 6,
+        comments: []
+    },
+    {
+        poster: "Master Reposter",
+        header: "repost #1",
+        peek: "totally not a repost",
+        content: "Totally not a repost",
+        timestamp: new Date("2018-11-01T16:17:00"),
+        image: "https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg?cs=srgb&dl=light-art-blue-370799.jpg&fm=jpg",
+        category: "memes",
+        quality: 6,
+        comments: []
+    },
+    {
+        poster: "Master Reposter",
+        header: "repost #1",
+        peek: "totally not a repost",
+        content: "Totally not a repost",
+        timestamp: new Date("2018-11-01T16:17:00"),
+        image: "https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg?cs=srgb&dl=light-art-blue-370799.jpg&fm=jpg",
+        category: "memes",
+        quality: 6,
+        comments: []
+    },
+    {
+        poster: "Master Reposter",
+        header: "repost #1",
+        peek: "totally not a repost",
+        content: "Totally not a repost",
+        timestamp: new Date("2018-11-01T16:17:00"),
+        image: "https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg?cs=srgb&dl=light-art-blue-370799.jpg&fm=jpg",
+        category: "memes",
+        quality: 6,
+        comments: []
     }
 ]

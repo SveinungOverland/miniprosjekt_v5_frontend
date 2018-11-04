@@ -10,7 +10,23 @@ const styles = createStyles({
         gridTemplateColumns: '1fr',
         gridAutoRows: 'auto',
         gridGap: '20px',
-        padding: '20px 10px'
+        padding: '20px 10px',
+
+        "@media only screen and (min-width: 600px)": {
+            gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr',
+
+            "& > :first-child": {
+                gridColumn: '1/-1',
+                width: 'auto !important'
+            },
+            "& > :nth-child(2), > :nth-child(3)": {
+                gridColumn: 'span 3'
+            },
+            "& > div": {
+                gridColumn: 'span 2'
+            }
+        },
+        
     }
 })
 
