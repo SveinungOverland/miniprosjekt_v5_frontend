@@ -1,6 +1,7 @@
 // Type imports
 import News from '../types/news'
 import Comment from '../types/comment'
+import User from '../types/user'
 
 
 
@@ -18,29 +19,18 @@ export enum StatusCodes {
 interface ApiResponse {
     status: StatusCodes,
     status_message: string,
+    token?: string
 }
 
 
-class DataResponse<T> implements ApiResponse {
-    status: StatusCodes
-    status_message: string
+interface DataResponse<T> extends ApiResponse {
     data: T
-    constructor(data: T) {
-        this.status = StatusCodes.OK
-        this.status_message = "Data retrieved successfully"
-        this.data = data
-    }
 }
 
 
-export class ErrorResponse {
-    static create(status: StatusCodes, error_message: string): ApiResponse {
-        return { status: status, status_message: error_message }
-    }
-}
+export interface UserResponse extends DataResponse<User> { }
+
+export interface NewsResponse extends DataResponse<News[]> { }
 
 
-export class NewsResponse extends DataResponse<News[]> { }
-
-
-export class CommentsResponse extends DataResponse<Comment[]> { }
+export interface CommentsResponse extends DataResponse<Comment[]> { }

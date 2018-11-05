@@ -1,9 +1,6 @@
 // Response imports
-import { NewsResponse, ErrorResponse, StatusCodes } from './responseInterfaces'
-
-// Test data imports
-import { all_time } from '../testdata/news'
-
+import { NewsResponse } from './responseInterfaces'
+import API, { Methods } from './api';
 
 
 
@@ -15,13 +12,17 @@ export enum NewsEnum {
     newest
 }
 
-export const getNews = (type: NewsEnum): Promise<NewsResponse> => new Promise((resolve, reject) => {
-    switch(type) {
-        case NewsEnum.all_time:
-            setTimeout(() => resolve(new NewsResponse(all_time)), 1000)
-            break
-        default:
-            setTimeout(() => reject(ErrorResponse.create(StatusCodes.NOT_FOUND, "This has not been implemented yet")), 1000)
-            break
-    }
-})
+
+
+export const postNews = async (newNews: { 
+    header: string,
+    content: string,
+    peek: string,
+    image: string,
+    category: string
+ }): Promise<{}> =>
+    API.fetch('/api/news', Methods.POST, newNews)
+
+
+export const getNewsFromUsername = async (username: string): Promise<NewsResponse> =>
+    API.fetch<NewsResponse>(`/api/news/${username}`, Methods.GET)

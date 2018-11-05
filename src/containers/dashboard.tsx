@@ -12,7 +12,7 @@ import EventListener from 'react-event-listener'
 import News from '../types/news'
 
 // API imports
-import { getNews, NewsEnum } from '../api/news'
+import { NewsEnum } from '../api/news'
 import { NewsResponse } from '../api/responseInterfaces';
 
 // Project imports
@@ -27,11 +27,6 @@ const styles = ({ spacing }: Theme) => createStyles({
         maxWidth: 1200,
         paddingTop: 48,
     },
-    fab: {
-        position: 'fixed',
-        bottom: spacing.unit * 2,
-        right: spacing.unit * 2,
-    }
 })
 
 enum ScrollDir {
@@ -67,9 +62,9 @@ class Dashboard extends Component<Props> {
     
 
     componentDidMount() {
-        getNews(NewsEnum.all_time)
+        /*getNews(NewsEnum.all_time)
             .then((res: NewsResponse) => this.overwriteNews(res.data))
-        
+        */
     }
 
 
@@ -114,7 +109,7 @@ class Dashboard extends Component<Props> {
                         ))}
                     </NewsGridComponent>
                     <Slide direction="up" in={ showFab }>
-                        <AddFab className={ classes.fab } onClick={ this.handleAdd } />
+                        <AddFab onClick={ this.handleAdd } />
                     </Slide>
                     
                 </EventListener>
