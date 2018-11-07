@@ -56,6 +56,7 @@ class Login extends Component<Props> {
             const { username, password } = this.state
             if (action === SubmitActions.LOGIN) {
                 postToken({ username, password })
+                .then(_ => this.forceUpdate())
             } else {
                 //postUser()
             }
