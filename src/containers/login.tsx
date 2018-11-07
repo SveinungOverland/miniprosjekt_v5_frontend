@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, FormEvent } from 'react'
 
 import { createStyles, withStyles } from '@material-ui/core/styles'
 
@@ -51,7 +51,7 @@ class Login extends Component<Props> {
 
 
     handleSubmit = (action: SubmitActions) => 
-        (event: React.MouseEvent<HTMLElement>) => {
+        (event: FormEvent<HTMLElement>) => {
             event.preventDefault()
             const { username, password } = this.state
             if (action === SubmitActions.LOGIN) {
@@ -82,7 +82,7 @@ class Login extends Component<Props> {
         return (
             <div style={{ paddingTop: 20 }}>
             <Paper className={ classes.root }>
-                <form className={ classes.form }>
+                <form className={ classes.form } onSubmit={ this.handleSubmit(SubmitActions.LOGIN) }>
                     <TextField
                         id="username"
                         name="username"
