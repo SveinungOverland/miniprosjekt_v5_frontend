@@ -14,7 +14,7 @@ export default class API {
     static fetch<T>(url: string, method: Methods, payload: object = {}): Promise<T> {
             let token: string = localStorage.getItem("access-token") || ""
         
-            return fetch(url, {
+            return fetch("https://miniprosjekt-api.herokuapp.com" + url, {
                 method: method,
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
