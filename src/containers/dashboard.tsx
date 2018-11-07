@@ -12,6 +12,7 @@ import EventListener from 'react-event-listener'
 import News from '../types/news'
 
 // API imports
+import { getVerifiedUsername } from '../api/user'
 import { NewsEnum } from '../api/news'
 import { NewsResponse } from '../api/responseInterfaces';
 
@@ -91,6 +92,7 @@ class Dashboard extends Component<Props> {
 
 
     render() {
+        const username = getVerifiedUsername()
         const { classes } = this.props;
         const { news, showFab } = this.state;
         return (
@@ -108,9 +110,14 @@ class Dashboard extends Component<Props> {
                             <NewsComponent key={ item.poster +"+"+ item.timestamp+"+"+index } { ...item } />
                         ))}
                     </NewsGridComponent>
-                    <Slide direction="up" in={ showFab }>
-                        <AddFab onClick={ this.handleAdd } />
-                    </Slide>
+                    { username ?
+                        <Slide direction="up" in={ showFab }>
+                            <AddFab onClick={ this.handleAdd } />
+                        </Slide>
+                        :
+                        null
+                    }
+                    
                     
                 </EventListener>
             </div>

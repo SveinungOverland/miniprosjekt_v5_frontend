@@ -11,6 +11,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 import theme from './theme'
 import WindowWrapper from './containers/window_wrapper'
 import Dashboard from './containers/dashboard'
+import Login from './containers/login'
 
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={ Dashboard } />
+                    <Route exact path="/login" component={ Login } />
                 </Switch>
             </BrowserRouter>
         </WindowWrapper>

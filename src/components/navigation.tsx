@@ -1,7 +1,7 @@
 import React, { ReactNode, Component } from 'react'
 
 import { withStyles, createStyles } from '@material-ui/core/styles'
-
+import { getVerifiedUsername } from '../api/user'
 import jwt_decode from 'jwt-decode'
 
 // UI imports
@@ -16,6 +16,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 
 
@@ -63,8 +64,7 @@ class Navigation extends Component<Props> {
 
 
     render() {
-        const token: string | null = localStorage.getItem('token')
-        const username: string | null = token ? JSON.parse(jwt_decode(token)).username : null
+        const username: string | null = getVerifiedUsername()
 
         const { classes } = this.props
         const { anchorEl } = this.state
@@ -110,9 +110,10 @@ class Navigation extends Component<Props> {
                         </div>
                         :
                         <div className={ classes.anchorRight }>
-                            <Button variant="flat" color="inherit">Create Account</Button>
-                            <Button variant="flat" color="inherit">Login</Button>
-                        </div>    
+                            <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>
+                                <Button variant="flat" color="inherit">Create/Login</Button>
+                            </Link>
+                        </div>
                     }
                 </Toolbar>
             </AppBar>
