@@ -11,7 +11,6 @@ import { postUser, getVerifiedUsername } from '../api/user'
 import { postToken } from '../api/token'
 import { Redirect } from 'react-router'
 
-
 const styles = createStyles({
     root: {
         maxWidth: 600,
