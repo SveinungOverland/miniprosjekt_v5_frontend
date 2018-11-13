@@ -4,8 +4,8 @@ import { FormLabel } from '@material-ui/core';
 
 
 
-import { getUser } from '../api/user'
-import { getNewsFromUsername } from '../api/news'
+import { getUser } from '../services/user'
+import { getNewsFromUsername } from '../services/news'
 
 
 

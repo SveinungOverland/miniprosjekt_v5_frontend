@@ -12,9 +12,9 @@ import EventListener from 'react-event-listener'
 import News from '../types/news'
 
 // API imports
-import { getVerifiedUsername } from '../api/user'
-import { NewsEnum } from '../api/news'
-import { NewsResponse } from '../api/responseInterfaces';
+import { getVerifiedUsername } from '../services/user'
+import { NewsEnum } from '../services/news'
+import { NewsResponse } from '../services/responseInterfaces';
 
 // Project imports
 import NewsGridComponent from '../components/news_grid'

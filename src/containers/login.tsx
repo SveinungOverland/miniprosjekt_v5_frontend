@@ -7,8 +7,8 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
 // API imports
-import { postUser, getVerifiedUsername } from '../api/user'
-import { postToken } from '../api/token'
+import { postUser, getVerifiedUsername } from '../services/user'
+import { postToken } from '../services/token'
 import { Redirect } from 'react-router'
 
 

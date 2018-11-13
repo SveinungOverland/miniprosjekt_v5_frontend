@@ -1,8 +1,7 @@
 import React, { ReactNode, Component } from 'react'
 
-import { withStyles, createStyles } from '@material-ui/core/styles'
-import { getVerifiedUsername } from '../api/user'
-import jwt_decode from 'jwt-decode'
+import { withStyles, createStyles, Theme } from '@material-ui/core/styles'
+import { getVerifiedUsername } from '../services/user'
 
 // UI imports
 import AppBar from '@material-ui/core/AppBar'
@@ -21,9 +20,10 @@ import { Link } from 'react-router-dom';
 
 
 // Style used by navigation
-const styles = createStyles({
+const styles = ({ zIndex }: Theme) => createStyles({
     root: {
         flexGrow: 1,
+        zIndex: zIndex.drawer + 1
     },
 
     grow: {
@@ -72,7 +72,7 @@ class Navigation extends Component<Props> {
         const open = Boolean(anchorEl)
 
         return (
-            <AppBar className={ classes.appbar }>
+            <AppBar className={ classes.root }>
                 <Toolbar variant="dense">
                     <IconButton color="inherit">
                         <MenuIcon />

@@ -5,6 +5,7 @@ import React from 'react'
 import Button from '@material-ui/core/Button'
 import Add from '@material-ui/icons/Add'
 import { withStyles, createStyles, Theme } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 
 const styles = ({ spacing }: Theme) => createStyles({
@@ -22,7 +23,9 @@ interface Props {
 }
 
 export default withStyles(styles)((props: Props) => (
-    <Button className={props.classes.fab} variant="fab" onClick={props.onClick} color="secondary">
-        <Add />
-    </Button>
+    <Link to="/add" style={{ textDecoration: 'none' }}>
+        <Button className={props.classes.fab} variant="fab" onClick={props.onClick} color="secondary">
+            <Add />
+        </Button>
+    </Link>
 ))

@@ -1,5 +1,4 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 
 import { withStyles, createStyles } from '@material-ui/core/styles'
 
@@ -69,7 +68,6 @@ export default withStyles(styles)((props: Props) => {
                     :
                     null
                 }
-                
             </CardContent>
         </Card>
     )
