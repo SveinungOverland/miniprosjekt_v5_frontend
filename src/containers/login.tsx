@@ -55,7 +55,7 @@ class Login extends Component<Props> {
             event.preventDefault()
             const { username, password } = this.state
             if (action === SubmitActions.LOGIN) {
-                postToken({ username, password })
+                postToken({ "username": username, "password": password })
                 .then(_ => this.forceUpdate())
                 .catch(console.log)
             } else {
@@ -75,6 +75,8 @@ class Login extends Component<Props> {
     render() {
         const { classes } = this.props
         const { username, password } = this.state
+
+        console.log("Verified username", getVerifiedUsername())
 
         if (getVerifiedUsername()) {
             return <Redirect to="/" />

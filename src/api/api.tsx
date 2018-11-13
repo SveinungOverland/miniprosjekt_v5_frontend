@@ -9,11 +9,13 @@ export enum Methods {
 }
 
 
+
 export default class API {
 
     static async fetch<T>(url: string, method: Methods, payload: object = {}): Promise<T> {
             let token: string = localStorage.getItem("access-token") || ""
-        
+            console.log("Fetching request with body", payload)
+            console.log("Sending", JSON.stringify(payload))
             return fetch("https://miniprosjekt-api.herokuapp.com" + url, {
                 method: method,
                 headers: {

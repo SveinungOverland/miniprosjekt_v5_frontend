@@ -7,8 +7,9 @@ import API, { Methods } from './api'
 
 
 export const getVerifiedUsername = (): string | null => {
-    let token: string | null = localStorage.getItem('token')
-    return token ? JSON.parse(jwt_decode(token)).username : null
+    let token: string | null = localStorage.getItem('access-token')
+    let json: { username: string } | null = token ? jwt_decode(token) : null
+    return json ? json.username : null
 }
     
 
