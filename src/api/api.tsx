@@ -16,7 +16,6 @@ export default class API {
         
             return fetch("https://miniprosjekt-api.herokuapp.com" + url, {
                 method: method,
-                mode: 'no-cors',
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     "x-access-token": token
