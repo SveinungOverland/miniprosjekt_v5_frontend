@@ -1,6 +1,9 @@
 import React from 'react'
 
 import { withStyles, createStyles } from '@material-ui/core/styles'
+import { withRouter } from 'react-router-dom'
+
+import { History } from 'history'
 
 // UI imports
 import Card from '@material-ui/core/Card'
@@ -22,6 +25,7 @@ import News from '../types/news'
 
 const styles = createStyles({
     card: {
+        cursor: 'pointer'
     },
     media: {
         width: '100%',
@@ -34,30 +38,32 @@ const styles = createStyles({
 })
 
 interface Props extends News { 
+    editable: boolean,
     classes: { [name: string]: string },
+    history: History | undefined
 }
 
-
 export default withStyles(styles)((props: Props) => {
-    const handleUserLink = (event: React.MouseEvent<HTMLElement>) => {
 
-    }
-    const handleNewsLink = (event: React.MouseEvent<HTMLElement>) => {
+    const { classes, history, poster, timestamp } = props
 
+    console.log(typeof props.timestamp)
+
+    const handleOnClick = (event: React.MouseEvent) => {
+        history ? history.push(`/news/${poster}/${timestamp}`) : undefined
     }
-    const { classes } = props
+
     return (
-        <Card className={classes.card}>
+        <Card className={history ? classes.card : undefined} onClick={ history ? handleOnClick : undefined }>
             <CardHeader
                 avatar={
                     <Account className={ classes.avatar }/>
                 }
                 title={ props.poster }
-                subheader={ props.timestamp.toDateString() }
-                onClick={ handleUserLink }
+                subheader={ new Date(props.timestamp).toDateString() }
             />
             <img className={ classes.media } src={ props.image }/>
-            <CardContent onClick={ handleNewsLink }>
+            <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                     { props.header }
                 </Typography>

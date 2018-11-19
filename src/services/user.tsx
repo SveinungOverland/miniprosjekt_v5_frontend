@@ -1,7 +1,7 @@
 import jwt_decode from 'jwt-decode'
 
 // Response imports
-import { UserResponse } from './responseInterfaces'
+import { UserResponse, ApiResponse } from './responseInterfaces'
 
 import API, { Methods } from './api'
 
@@ -12,6 +12,9 @@ export const getVerifiedUsername = (): string | null => {
     return json ? json.username : null
 }
     
+export const removeVerifiedUsername = () => {
+    localStorage.removeItem('access-token')
+}
 
 export const postUser =  async (newUser: {username: string, password: string}) : Promise<UserResponse> =>
     API.fetch<UserResponse>('/api/user', Methods.POST, newUser)
@@ -23,4 +26,4 @@ export const getUser = async (username: string): Promise<UserResponse> =>
 
 
 export const deleteUser = async (username: string): Promise<{}> =>
-    API.fetch<{}>('/api/user', Methods.DELETE)
+    API.fetch<ApiResponse>('/api/user', Methods.DELETE)

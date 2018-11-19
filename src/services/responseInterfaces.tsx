@@ -16,7 +16,7 @@ export enum StatusCodes {
 }
 
 
-interface ApiResponse {
+export interface ApiResponse {
     status: StatusCodes,
     status_message: string,
     token?: string

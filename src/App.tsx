@@ -10,11 +10,10 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 // Project imports
 import theme from './theme'
 import WindowWrapper from './containers/window_wrapper'
-import requireLogin from './containers/requireLogin'
 import Dashboard from './containers/dashboard'
 import Login from './containers/login'
 import AddNews from './containers/addNews'
-
+import NewsDetail from './containers/newsDetail'
 
 const App = () => (
 
@@ -24,7 +23,8 @@ const App = () => (
                 <Switch>
                     <Route exact path="/" component={ Dashboard } />
                     <Route exact path="/login" component={ Login } />
-                    <Route exact path="/add" component={ requireLogin(AddNews) } />
+                    <Route exact path="/add" component={ AddNews } />
+                    <Route exact path="/news/:username/:timestamp" component={ NewsDetail } />
                 </Switch>
             </BrowserRouter>
         </WindowWrapper>

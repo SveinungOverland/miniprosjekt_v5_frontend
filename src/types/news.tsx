@@ -7,7 +7,7 @@ export default interface News {
     header: string,
     content: string,
     peek: string,
-    timestamp: Date,
+    timestamp: string,
     image: string, // url
     category: string,
     quality: number,

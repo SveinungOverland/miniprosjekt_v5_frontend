@@ -1,7 +1,7 @@
 import React, { ReactNode, Component } from 'react'
 
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles'
-import { getVerifiedUsername } from '../services/user'
+import { getVerifiedUsername, removeVerifiedUsername } from '../services/user'
 
 // UI imports
 import AppBar from '@material-ui/core/AppBar'
@@ -23,7 +23,7 @@ import { Link } from 'react-router-dom';
 const styles = ({ zIndex }: Theme) => createStyles({
     root: {
         flexGrow: 1,
-        zIndex: zIndex.drawer + 1
+        zIndex: zIndex.drawer + 2
     },
 
     grow: {
@@ -62,6 +62,11 @@ class Navigation extends Component<Props> {
             this.setState({ anchorEl: action ? event.currentTarget : null })
 
 
+    logOut = (event: React.MouseEvent<HTMLElement>) => {
+        removeVerifiedUsername()
+        this.forceUpdate()
+    }
+
 
     render() {
         const username: string | null = getVerifiedUsername()
@@ -77,9 +82,11 @@ class Navigation extends Component<Props> {
                     <IconButton color="inherit">
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" color="inherit" className={ classes.grow }>
-                        News
-                    </Typography>
+                    <Link to="/" style={{ color: 'white', textDecoration: 'none' }} className={ classes.grow }>
+                        <Typography variant="h6" color="inherit">
+                            News
+                        </Typography>
+                    </Link>
                     { username ?
                         <div className={ classes.anchorRight }>
                             <IconButton
@@ -104,8 +111,7 @@ class Navigation extends Component<Props> {
                                 open={open}
                                 onClose={this.handleMenu(MenuActions.CLOSE)}
                             >
-                                <MenuItem onClick={this.handleMenu(MenuActions.CLOSE)}>Profile</MenuItem>
-                                <MenuItem onClick={this.handleMenu(MenuActions.CLOSE)}>My account</MenuItem>
+                                <MenuItem onClick={this.logOut}>Log out</MenuItem>
                             </Menu>
                         </div>
                         :

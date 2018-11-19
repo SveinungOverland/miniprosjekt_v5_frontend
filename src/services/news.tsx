@@ -1,5 +1,5 @@
 // Response imports
-import { NewsResponse } from './responseInterfaces'
+import { NewsResponse, ApiResponse } from './responseInterfaces'
 import API, { Methods } from './api';
 
 
@@ -19,10 +19,30 @@ export const postNews = async (newNews: {
     content: string,
     peek: string,
     image: string,
-    category: string
- }): Promise<{}> =>
+    category: string,
+    poster: string // username
+ }): Promise<ApiResponse> =>
     API.fetch('/api/news', Methods.POST, newNews)
+
+
+export const updateNews = async (newNews: {
+    header: string,
+    content: string,
+    peek: string,
+    image: string,
+    category: string,
+    timestamp: string,
+    poster: string, // username
+}): Promise<ApiResponse> =>
+    API.fetch(`/api/news/${newNews.poster}/${newNews.timestamp}`, Methods.UPDATE)
+
+export const getNews = async (): Promise<NewsResponse> =>
+    API.fetch<NewsResponse>('/api/news/', Methods.GET)
 
 
 export const getNewsFromUsername = async (username: string): Promise<NewsResponse> =>
     API.fetch<NewsResponse>(`/api/news/${username}`, Methods.GET)
+
+
+export const getSpecificNews = async (username: string, timestamp: string): Promise<NewsResponse> =>
+    API.fetch<NewsResponse>(`/api/news/${username}/${timestamp}`, Methods.GET)

@@ -6,7 +6,7 @@ import { withStyles, createStyles } from '@material-ui/core/styles'
 const styles = createStyles({
     root: {
         minHeight: '100vh',
-        width: '100vw',
+        width: '100%',
         backgroundColor: '#e4e4e4'
     }
 })
