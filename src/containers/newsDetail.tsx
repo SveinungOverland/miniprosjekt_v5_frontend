@@ -90,7 +90,7 @@ class NewsDetail extends Component<Props> {
         }
 
         return (
-            <div className={ classes.root } key={`${username}${timestamp}`}>
+            <div className={ classes.root }>
                 <Navigation />
                 <LiveFeed history={ history }/>
                 { news ?
