@@ -47,12 +47,7 @@ interface Props {
 }
 
 interface State {
-    redirect: string | null,
     news: News[],
-    showFab: boolean,
-    scrollState: {
-        lastPosition: number
-    }
 }
 
 
@@ -60,13 +55,7 @@ class Dashboard extends Component<Props> {
 
 
     state: State = {
-        redirect: null,
         news: [],
-        showFab: true,
-
-        scrollState: {
-            lastPosition: 0
-        }
     }
     
 
@@ -81,20 +70,6 @@ class Dashboard extends Component<Props> {
 
 
 
-    handleScroll = (event: Event) => {
-        let newScrollY: number = window.scrollY
-        const { lastPosition } = this.state.scrollState
-        let newDir: ScrollDir = (newScrollY > lastPosition && newScrollY > 1) ? ScrollDir.DOWN : ScrollDir.UP
-
-        this.setState({
-            ...this.state,
-            scrollState: {
-                lastPosition: newScrollY
-            },
-            showFab: (newDir === ScrollDir.DOWN) ? false : true
-        })
-    }
-
     overwriteNews = (news: News[]) => this.setState({news: news})
 
     handleAdd = (event: React.MouseEvent<HTMLElement>) => {
@@ -102,28 +77,17 @@ class Dashboard extends Component<Props> {
     }
 
     render() {
-        const username = getVerifiedUsername()
         const { classes, history } = this.props;
-        const { news, showFab, redirect } = this.state;
+        const { news } = this.state;
 
-        if (redirect) {
-            return <Redirect to={redirect} />
-        }
-        console.log(this.props)
         return (
             <div className={ classes.root }>
-                <EventListener
-                    target="window"
-                    onScroll={ isMobile() ? this.handleScroll : undefined }>
 
-                    <Slide direction="down" in={ showFab }>
-                        <Navigation />
-                    </Slide>
+                    <Navigation />
 
                     <LiveFeed history={ history }/>
 
                     <NewsGridComponent>
-                        { console.log(news) }
                         { news.map((item: News, index: number) => (
                             <NewsComponent 
                                 key={ item.poster +"+"+ item.timestamp+"+"+index }
@@ -133,12 +97,7 @@ class Dashboard extends Component<Props> {
                         ))}
                     </NewsGridComponent>
                     
-                    <Slide direction="up" in={ showFab }>
-                        <AddFab onClick={ this.handleAdd } />
-                    </Slide>
-                    
-                    
-                </EventListener>
+                    <AddFab onClick={ this.handleAdd } />
             </div>
         )
     }
