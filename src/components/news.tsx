@@ -29,8 +29,12 @@ const styles = createStyles({
     },
     media: {
         width: '100%',
+        maxHeight: '60vh',
         objectFit: 'contain',
-        maxHeight: '100vh'
+
+        "@media only screen and (min-width: 600px)": {
+            maxHeight: 'auto'
+        }
     },
     actions: {
         display: 'flex',

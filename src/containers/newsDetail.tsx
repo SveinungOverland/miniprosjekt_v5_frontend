@@ -91,7 +91,7 @@ class NewsDetail extends Component<Props> {
 
         return (
             <div className={ classes.root }>
-                <Navigation />
+                <Navigation history={ history }/>
                 <LiveFeed history={ history }/>
                 { news ?
                     <div className={ classes.newsView }>

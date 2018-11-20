@@ -50,7 +50,8 @@ interface State {
 class LiveFeed extends Component<Props> {
 
     state: State = {
-        socket: io("https://miniprosjekt-api.herokuapp.com"),
+        // "https://miniprosjekt-api.herokuapp.com"
+        socket: io("http://localhost:3000"),
         news: []
     }
 
@@ -88,7 +89,7 @@ class LiveFeed extends Component<Props> {
                                 { item.header }
                             </Typography>
                             <Typography color="inherit" noWrap>
-                                { item.timestamp }
+                                { (new Date(item.timestamp)).toLocaleString() }
                             </Typography>
                         </div>
                     ))

@@ -1,6 +1,6 @@
 // Response imports
 import { NewsResponse, ApiResponse } from './responseInterfaces'
-import API, { Methods } from './api';
+import API, { Methods } from './api'
 
 
 
@@ -34,7 +34,7 @@ export const updateNews = async (newNews: {
     timestamp: string,
     poster: string, // username
 }): Promise<ApiResponse> =>
-    API.fetch(`/api/news/${newNews.poster}/${newNews.timestamp}`, Methods.UPDATE)
+    API.fetch(`/api/news/${newNews.poster}/${newNews.timestamp}`, Methods.PUT, newNews)
 
 export const getNews = async (): Promise<NewsResponse> =>
     API.fetch<NewsResponse>('/api/news/', Methods.GET)
@@ -46,3 +46,7 @@ export const getNewsFromUsername = async (username: string): Promise<NewsRespons
 
 export const getSpecificNews = async (username: string, timestamp: string): Promise<NewsResponse> =>
     API.fetch<NewsResponse>(`/api/news/${username}/${timestamp}`, Methods.GET)
+
+
+export const deleteNews = async (username: string, timestamp: string): Promise<ApiResponse> =>
+    API.fetch(`/api/news/${username}/${timestamp}`, Methods.DELETE)

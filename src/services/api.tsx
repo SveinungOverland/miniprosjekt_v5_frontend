@@ -7,8 +7,7 @@ export enum Methods {
     POST = "POST",
     GET = "GET",
     PUT = "PUT",
-    DELETE = "DELETE",
-    UPDATE = "UPDATE"
+    DELETE = "DELETE"
 }
 
 // URL https://miniprosjekt-api.herokuapp.com
@@ -19,7 +18,7 @@ export default class API {
             let token: string = localStorage.getItem("access-token") || ""
             console.log("Fetching request with body", payload)
             console.log("Sending", JSON.stringify(payload))
-            return fetch("https://miniprosjekt-api.herokuapp.com" + url, {
+            return fetch("http://localhost:3000" + url, {
                 method: method,
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",

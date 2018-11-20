@@ -22,6 +22,7 @@ const App = () => (
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={ Dashboard } />
+                    <Route exact path="/category/:name" component={ Dashboard } />
                     <Route exact path="/login" component={ Login } />
                     <Route exact path="/add" component={ AddNews } />
                     <Route exact path="/news/:username/:timestamp" component={ NewsDetail } />

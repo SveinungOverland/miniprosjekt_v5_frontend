@@ -16,6 +16,7 @@ import News from '../types/news'
 // API imports
 import { getVerifiedUsername } from '../services/user'
 import { NewsEnum, getNews } from '../services/news'
+import { getFromName } from '../services/category'
 import { NewsResponse } from '../services/responseInterfaces'
 
 import { Redirect } from 'react-router'
@@ -44,10 +45,18 @@ interface Props {
     classes: { [name: string]: string },
     children: ReactNode,
     history: History
+
+    match: {
+        params: {
+            name: string | undefined
+        }
+    }
 }
 
 interface State {
     news: News[],
+
+    propsRef: Props
 }
 
 
@@ -56,21 +65,39 @@ class Dashboard extends Component<Props> {
 
     state: State = {
         news: [],
+
+        propsRef: this.props
     }
     
 
     componentDidMount() {
-        getNews() // getNews(NewsEnum.all_time)
+        const { name } = this.props.match.params
+
+        if (name != undefined) {
+            const { name } = this.props.match.params
+            getFromName(name as string)
             .then((res: NewsResponse) => {
-                console.log(res)
                 this.overwriteNews(res.data)
             })
-        
+        } else {
+            getNews()
+            .then((res: NewsResponse) => {
+                this.overwriteNews(res.data)
+            })
+        }
+    }
+
+    shouldComponentUpdate(nextProps: Readonly<Props>) {
+        if (nextProps.match.params.name != this.state.propsRef.match.params.name) {
+            this.setState({ propsRef: nextProps })
+            this.componentDidMount()
+        }
+        return true
     }
 
 
 
-    overwriteNews = (news: News[]) => this.setState({news: news})
+    overwriteNews = (news: News[]) => this.setState({ news: news })
 
     handleAdd = (event: React.MouseEvent<HTMLElement>) => {
         console.log("ADDING ASIFIAUDSGBdblihj")
@@ -83,7 +110,7 @@ class Dashboard extends Component<Props> {
         return (
             <div className={ classes.root }>
 
-                    <Navigation />
+                    <Navigation history={ history }/>
 
                     <LiveFeed history={ history }/>
 

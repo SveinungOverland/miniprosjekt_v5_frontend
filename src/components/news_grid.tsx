@@ -17,7 +17,7 @@ const styles = createStyles({
 
             "& > :first-child": {
                 gridColumn: '1/-1',
-                width: 'auto !important'
+                width: 'auto !important',
             },
             "& > :nth-child(2), > :nth-child(3)": {
                 gridColumn: 'span 3'

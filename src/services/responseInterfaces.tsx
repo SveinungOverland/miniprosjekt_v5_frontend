@@ -23,7 +23,7 @@ export interface ApiResponse {
 }
 
 
-interface DataResponse<T> extends ApiResponse {
+export interface DataResponse<T> extends ApiResponse {
     data: T
 }
 
