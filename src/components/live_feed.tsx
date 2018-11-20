@@ -51,7 +51,7 @@ class LiveFeed extends Component<Props> {
 
     state: State = {
         // "https://miniprosjekt-api.herokuapp.com"
-        socket: io("http://localhost:3000"),
+        socket: io("https://miniprosjekt-api.herokuapp.com"),
         news: []
     }
 

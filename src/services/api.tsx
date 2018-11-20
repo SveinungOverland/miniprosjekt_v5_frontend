@@ -18,7 +18,7 @@ export default class API {
             let token: string = localStorage.getItem("access-token") || ""
             console.log("Fetching request with body", payload)
             console.log("Sending", JSON.stringify(payload))
-            return fetch("http://localhost:3000" + url, {
+            return fetch("https://miniprosjekt-api.herokuapp.com" + url, {
                 method: method,
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",

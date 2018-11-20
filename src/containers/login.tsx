@@ -13,7 +13,6 @@ import Tab from '@material-ui/core/Tab'
 // API imports
 import { postUser, getVerifiedUsername } from '../services/user'
 import { postToken } from '../services/token'
-import { Redirect } from 'react-router'
 
 
 const styles = createStyles({
@@ -95,7 +94,7 @@ class Login extends Component<Props> {
         return (
             <div style={{ paddingTop: 20 }}>
             <Paper className={ classes.root }>
-                <Tabs value={ value }  onChange={ this.handleTabChange }>
+                <Tabs value={ value }  onChange={ this.handleTabChange } fullWidth>
                     <Tab label="Login" />
                     <Tab label="Create user" />
                 </Tabs>

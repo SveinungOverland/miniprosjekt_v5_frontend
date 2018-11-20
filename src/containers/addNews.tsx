@@ -18,6 +18,8 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import Typography from '@material-ui/core/Typography'
 
 import FormControl from '@material-ui/core/FormControl'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
 
@@ -109,7 +111,8 @@ interface State {
         content: string,
         peek: string,
         image: string,
-        category: string
+        category: string,
+        hide: boolean
     },
 
     categories: string[]
@@ -125,10 +128,11 @@ class AddNews extends Component<Props> {
             content: "",
             peek: "",
             image: "",
-            category: ""
+            category: "",
+            hide: false
         },
 
-        categories: []
+        categories: ['categories have not loaded yet']
     }
 
 
@@ -202,7 +206,8 @@ class AddNews extends Component<Props> {
                 content: "",
                 peek: "",
                 image: "",
-                category: ""
+                category: "",
+                hide: false
             }
         })
 
@@ -223,7 +228,7 @@ class AddNews extends Component<Props> {
     render() {
         const { classes, history } = this.props
         const { news, categories, position } = this.state
-        const { header, content, peek, image, category } = this.state.selected
+        const { header, content, peek, image, category, hide } = this.state.selected
 
         const username = getVerifiedUsername()
 
@@ -303,12 +308,32 @@ class AddNews extends Component<Props> {
                             />
                             <TextField 
                                 required
+                                multiline
+                                rows="6"
                                 id="content"
                                 name="content"
                                 label="Content"
                                 value={ content }
                                 onChange={ this.handleChange }
                             />
+                                
+                            <FormControl>
+                                <InputLabel>Hide</InputLabel>
+                                <Select 
+                                    id="hide"
+                                    name="hide"
+                                    value={ String(hide) }
+                                    onChange={ this.handleChange }
+                                >
+                                    <MenuItem value="false">
+                                        No
+                                    </MenuItem>
+                                    <MenuItem value="true">
+                                        Yes
+                                    </MenuItem>
+                                </Select>
+                            </FormControl>
+                            
                             
                     </Paper>
                     <Paper className={ classes.submit }>

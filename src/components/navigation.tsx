@@ -172,7 +172,7 @@ class Navigation extends Component<Props> {
 
                             {
                                 categories.map((item, index) => (
-                                    <ListItem key={index} button onClick={ this.handleTarget(`/category/${item}`)}>
+                                    <ListItem key={index} button onClick={ this.handleTarget(`/category/${item}`) }>
                                         <ListItemText>{ item }</ListItemText>
                                     </ListItem>
                                 ))
