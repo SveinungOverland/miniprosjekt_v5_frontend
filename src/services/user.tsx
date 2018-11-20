@@ -26,4 +26,4 @@ export const getUser = async (username: string): Promise<UserResponse> =>
 
 
 export const deleteUser = async (username: string): Promise<{}> =>
-    API.fetch<ApiResponse>('/api/user', Methods.DELETE)
+    API.fetch<ApiResponse>(`/api/user/${username}`, Methods.DELETE)
